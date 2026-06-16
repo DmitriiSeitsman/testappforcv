@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { CountdownTimer } from '../../components/CountdownTimer/CountdownTimer'
 import './OfferPage.css'
 
@@ -16,40 +16,11 @@ function scrollToFormOrElse() {
 }
 
 export function OfferPage() {
-  const [heroSrc, setHeroSrc] = useState(OFFER_HERO_MOBILE)
-
   const onDiscover = useCallback(() => {
     scrollToFormOrElse()
   }, [])
 
   const heroAlt = useMemo(() => 'Девушка с боксерской грушей', [])
-
-  useEffect(() => {
-    const getSrc = () =>
-      window.matchMedia('(min-width: 901px)').matches
-        ? OFFER_HERO_DESKTOP
-        : OFFER_HERO_MOBILE
-
-    setHeroSrc(getSrc())
-
-    const mql = window.matchMedia('(min-width: 901px)')
-    const onChange = () => setHeroSrc(getSrc())
-
-    const mqlAny = mql as unknown as {
-      addEventListener?: (type: string, listener: () => void) => void
-      removeEventListener?: (type: string, listener: () => void) => void
-      addListener?: (listener: () => void) => void
-      removeListener?: (listener: () => void) => void
-    }
-
-    if (mqlAny.addEventListener) {
-      mqlAny.addEventListener('change', onChange)
-      return () => mqlAny.removeEventListener?.('change', onChange)
-    }
-
-    mqlAny.addListener?.(onChange)
-    return () => mqlAny.removeListener?.(onChange)
-  }, [])
 
   return (
     <section className="offer" aria-label="Промо-страница">
@@ -87,13 +58,15 @@ export function OfferPage() {
         </div>
 
         <div className="offer__image-column" aria-hidden="true">
-          <img
-            className="offer__hero-image"
-            src={heroSrc}
-            alt={heroAlt}
-            onError={() => setHeroSrc(OFFER_HERO_MOBILE)}
-            loading="eager"
-          />
+          <picture className="offer__picture">
+            <source media="(min-width: 901px)" srcSet={OFFER_HERO_DESKTOP} />
+            <img
+              className="offer__hero-image"
+              src={OFFER_HERO_MOBILE}
+              alt={heroAlt}
+              loading="eager"
+            />
+          </picture>
         </div>
       </div>
     </section>

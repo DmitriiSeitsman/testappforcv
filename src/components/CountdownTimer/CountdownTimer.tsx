@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './CountdownTimer.css'
 
 const SALE_END_DATE = new Date('2026-06-21T23:59:59+03:00')
@@ -29,13 +29,20 @@ function computeParts(nowMs: number) {
 }
 
 export function CountdownTimer() {
-  const initialNow = useMemo(() => Date.now(), [])
-  const [nowMs, setNowMs] = useState(initialNow)
+  const [nowMs, setNowMs] = useState(0)
 
   useEffect(() => {
-    const id = window.setInterval(() => setNowMs(Date.now()), 1000)
-    return () => window.clearInterval(id)
+    const update = () => setNowMs(Date.now())
+    const timeoutId = window.setTimeout(update, 0)
+    const intervalId = window.setInterval(update, 1000)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      window.clearInterval(intervalId)
+    }
   }, [])
+
+  if (nowMs === 0) return null
 
   const { days, hours, minutes, seconds, expired } = computeParts(nowMs)
 
