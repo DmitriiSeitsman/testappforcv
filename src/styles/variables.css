@@ -1,0 +1,16 @@
+:root {
+  --color-primary: #f66297;
+  --color-text: #000000;
+  --color-white: #ffffff;
+  --color-trust-bg: #f3f3f3;
+
+  --font-family: 'Gilroy', 'Roboto', sans-serif;
+
+  --container-padding: 20px;
+  --container-max-mobile: 506px;
+  --container-max-desktop: 760px;
+  --card-max-width: 476px;
+  --card-max-width-desktop: 520px;
+
+  --breakpoint-desktop: 768px;
+}
