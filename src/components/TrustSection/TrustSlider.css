@@ -8,14 +8,26 @@
 .trust-slider__viewport {
   overflow-x: auto;
   overflow-y: hidden;
-  height: var(--trust-slider-image-size);
+  height: calc(var(--trust-slider-image-size) + 10px);
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
 }
 
 .trust-slider__viewport::-webkit-scrollbar {
-  display: none;
+  height: 6px;
+}
+
+.trust-slider__viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.trust-slider__viewport::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 1px;
 }
 
 .trust-slider__track {
@@ -29,6 +41,7 @@
   flex: 0 0 var(--trust-slider-image-size);
   width: var(--trust-slider-image-size);
   height: var(--trust-slider-image-size);
+  scroll-snap-align: start;
 }
 
 .trust-slider__image {

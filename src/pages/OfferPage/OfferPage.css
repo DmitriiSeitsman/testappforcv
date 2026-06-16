@@ -172,6 +172,7 @@
     inset: auto;
     order: 2;
     width: 100%;
+    max-width: 420px;
     min-height: auto;
     display: flex;
     align-items: flex-end;
@@ -215,7 +216,7 @@
   .offer__hero-image {
     position: relative;
     inset: auto;
-    width: min(100%, 690px);
+    width: 100%;
     height: auto;
     object-fit: contain;
     object-position: center bottom;
@@ -239,6 +240,10 @@
 @media (max-width: 640px) {
   .offer__container {
     padding: 38px 20px 48px;
+  }
+
+  .offer__image-column {
+    max-width: 100%;
   }
 
   .offer__title {

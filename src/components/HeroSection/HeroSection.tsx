@@ -1,9 +1,13 @@
 import './HeroSection.css'
 import heroImage from '../../assets/68.png'
 
-export function HeroSection() {
+export function HeroSection({
+  onChooseProgram,
+}: {
+  onChooseProgram?: () => void
+}) {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className="hero" id="form" aria-labelledby="hero-title">
       <div className="hero__container">
         <div className="hero__grid">
           <div className="hero__content">
@@ -27,7 +31,11 @@ export function HeroSection() {
             </p>
 
             <div className="hero__actions">
-              <button className="hero__button" type="button">
+              <button
+                className="hero__button"
+                type="button"
+                onClick={() => onChooseProgram?.()}
+              >
                 ВЫБРАТЬ ПРОГРАММУ
               </button>
             </div>

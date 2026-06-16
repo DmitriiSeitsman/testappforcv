@@ -2,12 +2,16 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { HeroSection } from './components/HeroSection/HeroSection'
 import { TrustSection } from './components/TrustSection/TrustSection'
 import { SocialProofSection } from './components/SocialProofSection/SocialProofSection'
+import { HomeWorkoutsSection } from './components/HomeWorkoutsSection/HomeWorkoutsSection'
+import { ContactToast } from './components/ContactToast/ContactToast'
 import { OfferPage } from './pages/OfferPage/OfferPage'
+import { PartnerRegistrationPage } from './pages/PartnerRegistrationPage/PartnerRegistrationPage'
 
 function App() {
   const normalizePath = useCallback((path: string) => {
-    if (path.length > 1 && path.endsWith('/')) return path.slice(0, -1)
-    return path
+    const pathname = path.split(/[?#]/)[0] || '/'
+    if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1)
+    return pathname
   }, [])
 
   const initialPath = useMemo(() => {
@@ -26,23 +30,48 @@ function App() {
   const navigate = useCallback(
     (to: string) => {
       const next = normalizePath(to)
-      window.history.pushState({}, '', next)
+      window.history.pushState({}, '', to)
       setPath(next)
     },
     [normalizePath]
   )
 
   const isOfferRoute = path === '/offer' || path === '/top5'
+  const isPartnerRegistrationRoute = path === '/partnerregistration'
+
+  const navigateToPartnerRegistration = useCallback(() => {
+    const search = window.location.search || ''
+    navigate(`/partnerregistration${search}`)
+  }, [navigate])
+
+  const navigateToOffer = useCallback(() => {
+    const search = window.location.search || ''
+    navigate(`/offer${search}`)
+  }, [navigate])
+
+  const scrollToForm = useCallback(() => {
+    const form = document.getElementById('form')
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.replaceState({}, '', `${window.location.pathname}#form`)
+    }
+  }, [])
 
   if (isOfferRoute) {
     return <OfferPage />
   }
 
+  if (isPartnerRegistrationRoute) {
+    return <PartnerRegistrationPage />
+  }
+
   return (
     <main>
-      <HeroSection />
+      <HeroSection onChooseProgram={navigateToPartnerRegistration} />
       <TrustSection />
-      <SocialProofSection onBackToOffer={() => navigate('/offer')} />
+      <SocialProofSection onReturnToForm={scrollToForm} />
+      <HomeWorkoutsSection onDetails={navigateToOffer} />
+      <ContactToast />
     </main>
   )
 }

@@ -8,12 +8,16 @@ const SOCIAL_PROOF_IMAGES = [
 ] as const
 
 export function SocialProofSection({
-  onBackToOffer,
+  onReturnToForm,
 }: {
-  onBackToOffer?: () => void
+  onReturnToForm?: () => void
 }) {
   return (
-    <section className="social-proof" aria-labelledby="social-proof-title">
+    <section
+      className="social-proof"
+      id="social-proof-section"
+      aria-labelledby="social-proof-title"
+    >
       <div className="social-proof__container">
         <h2 className="social-proof__title" id="social-proof-title">
           Кате доверяют миллионы.{' '}
@@ -50,7 +54,7 @@ export function SocialProofSection({
         <button
           className="social-proof__button"
           type="button"
-          onClick={() => onBackToOffer?.()}
+          onClick={() => onReturnToForm?.()}
         >
           ВЕРНУТЬ ФОРМУ
         </button>
