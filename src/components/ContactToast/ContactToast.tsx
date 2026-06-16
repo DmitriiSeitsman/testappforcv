@@ -43,7 +43,7 @@ export function ContactToast() {
   return (
     <aside className="contact-toast" aria-live="polite">
       <p className="contact-toast__text">
-        Дмитрий С. ожидает приглашение на собеседование :)
+        Дмитрий С. ожидает приглашения на собеседование :)
       </p>
       <a
         className="contact-toast__button"
