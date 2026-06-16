@@ -1,0 +1,20 @@
+.countdown__value {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #ff7f95;
+}
+
+.countdown__value--expired {
+  color: #ff7f95;
+}
+
+.expired {
+  /* reserved for future styling */
+}
+
+@media (max-width: 640px) {
+  .countdown__value {
+    font-size: 28px;
+  }
+}

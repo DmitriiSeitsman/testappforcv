@@ -1,0 +1,250 @@
+.offer {
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+.offer__container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.offer__text-column {
+  width: min(520px, calc(100% - 48px));
+  margin-left: clamp(24px, 7vw, 120px);
+  padding: 80px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.offer__title {
+  margin: 0 0 48px;
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.offer__title-accent {
+  color: #ff7f95;
+}
+
+.offer__description {
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: #000000;
+  margin: 0 0 24px;
+}
+
+.offer__description--no-accent {
+  margin-bottom: 0;
+}
+
+.offer__description-accent {
+  color: var(--color-primary);
+}
+
+.offer__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 260px;
+  min-height: 70px;
+  padding: 0 42px;
+  border: none;
+  border-radius: 100px;
+  background: #ff7f95;
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  margin-top: 30px;
+}
+
+.offer__cta:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.offer__vpn {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.18);
+}
+
+.offer__timer {
+  margin-top: 24px;
+}
+
+.offer__timer-label {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.offer__image-column {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.offer__image-column::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.78) 27%,
+    rgba(255, 255, 255, 0.18) 53%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.offer__hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.offer__image-column::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 190px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.9) 58%,
+    #ffffff 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .offer__container {
+    min-height: 100vh;
+    padding: 48px 24px 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+  }
+
+  .offer__text-column {
+    display: contents;
+  }
+
+  .offer__image-column {
+    position: relative;
+    inset: auto;
+    order: 2;
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 8px auto 30px;
+  }
+
+  .offer__title {
+    order: 1;
+    width: 100%;
+    max-width: 620px;
+    font-size: 36px;
+    margin: 0 auto;
+  }
+
+  .offer__description {
+    order: 3;
+    width: 100%;
+    max-width: 506px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+  }
+
+  .offer__description--no-accent {
+    order: 4;
+  }
+
+  .offer__cta {
+    order: 5;
+  }
+
+  .offer__vpn {
+    order: 6;
+  }
+
+  .offer__timer {
+    order: 7;
+  }
+
+  .offer__hero-image {
+    position: relative;
+    inset: auto;
+    width: min(100%, 690px);
+    height: auto;
+    object-fit: contain;
+    object-position: center bottom;
+    margin: 0 auto;
+  }
+
+  .offer__image-column::before,
+  .offer__image-column::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .offer__container {
+    padding: 38px 20px 48px;
+  }
+
+  .offer__title {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 1.15;
+  }
+
+  .offer__description {
+    font-size: 14px;
+  }
+
+  .offer__cta {
+    width: 100%;
+    min-width: 0;
+    min-height: 66px;
+    padding: 0 22px;
+    font-size: 14px;
+  }
+
+  .offer__timer {
+    margin-top: 20px;
+  }
+}
