@@ -1,5 +1,6 @@
 import './TrustSection.css'
 import dumbbellIcon from '../../assets/dumbbell-large-minimalistic-svgrepo-com 5.png'
+import { TrustSlider } from './TrustSlider'
 
 const TRUST_ITEMS = [
   'Вице-чемпионка мира и чемпионка России по фитнес-бикини',
@@ -17,7 +18,7 @@ export function TrustSection() {
           Доверьте свое тело чемпионке
           <br />
           фитнес-бикини и тренеру{' '}
-          <span className="trust__title-accent">Kate Усмановой</span>
+          <span className="trust__title-accent">Кате Усмановой</span>
         </h2>
 
         <p className="trust__description">
@@ -42,6 +43,8 @@ export function TrustSection() {
               </li>
             ))}
           </ul>
+
+          <TrustSlider />
         </article>
       </div>
     </section>

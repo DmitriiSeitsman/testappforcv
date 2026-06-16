@@ -34,8 +34,8 @@
 }
 
 .trust__card {
-  width: var(--card-max-width);
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--card-max-width);
   margin: 0 auto;
   padding: 30px 15px 15px;
   background-color: var(--color-white);
@@ -61,6 +61,10 @@
   margin-bottom: 0;
 }
 
+.trust__card .trust-slider {
+  margin-top: 20px;
+}
+
 .trust__icon {
   width: 30px;
   height: 30px;
@@ -79,7 +83,7 @@
 
 @media (min-width: 768px) {
   .trust__container {
-    max-width: var(--container-max-desktop);
+    max-width: var(--card-max-width-desktop);
   }
 
   .trust__card {

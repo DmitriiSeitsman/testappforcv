@@ -4,13 +4,16 @@
   --color-white: #ffffff;
   --color-trust-bg: #f3f3f3;
 
-  --font-family: 'Gilroy', 'Roboto', sans-serif;
+  --font-family: 'Gilroy', 'Manrope', 'Roboto', Arial, sans-serif;
 
   --container-padding: 20px;
   --container-max-mobile: 506px;
   --container-max-desktop: 760px;
   --card-max-width: 476px;
-  --card-max-width-desktop: 520px;
+  --card-max-width-desktop: 570px;
+  --trust-slider-image-size: 300px;
+  --trust-slider-gap: 16px;
+  --trust-slider-inset: 15px;
 
   --breakpoint-desktop: 768px;
 }
